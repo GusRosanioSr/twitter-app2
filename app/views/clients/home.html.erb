@@ -7,10 +7,13 @@
     </head>
     <body>
         <div class="maindiv">
-            <p>This is a test paragraph</p>
+            <h1>Search Twitter for latest Tweets on what you like!</h1>
         </div>
         <div class="twitter">
-
+            <%= @client.search("#rubyonrails", result_type: "recent").take(3).collect do |tweet| %>
+              <blockquote><h2>Username:</h2> <%= "#{tweet.user.screen_name}:" %></blockquote>
+              <blockquote><h3>Tweet:</h3> <%= "#{tweet.text}" %></blockquote>
+              <% end %>
         </div>
     </body>
 </html>

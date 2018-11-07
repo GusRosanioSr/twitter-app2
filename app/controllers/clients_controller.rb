@@ -9,6 +9,6 @@ class ClientsController < ApplicationController
             config.access_token = "866054735882842112-eV3q0dG3AHGqxaQHbXAZDfndVf8qwkB"
             config.access_token_secret = "rAS2pKxnv9gyN98X2JgOw74mwEaURhIEx6Diz4cZqc6wX"
       end
-      @client = Twitter::Client.new
+      #@client = Twitter::REST::Client.new
     end
 end
