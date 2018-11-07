@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xm:lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <title>Twitter Client Home</title>
+        <link rel="stylesheet" href="home.css"/>
+    </head>
+    <body>
+        <div class="maindiv">
+            <h1>Search Twitter for latest Tweets on what you like!</h1>
+        </div>
+        <div class="twitter">
+            <%= @client.search("#reddeadredemption", result_type: "recent").take(3).collect do |tweet| %>
+              <blockquote><h2>Username:</h2> <%= "#{tweet.user.screen_name}:" %></blockquote>
+              <blockquote><h3>Tweet:</h3> <%= "#{tweet.text}" %></blockquote>
+              <% end %>
+        </div>
+    </body>
+</html>
