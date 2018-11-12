@@ -8,15 +8,18 @@
     <body>
         <div class="maindiv">
             <h1>Search Twitter for latest Tweets on what you like!</h1>
+            <p>Just type in what you want proceeded by a '#'</p>
+            <p>EX: '#rubyonrails'</p>
         </div>
         <div class="twitter">
-            <%= form_tag(clients_path) do %>
-            <p>Store <%= text_field_tag :search %></p>
+            <%= form_tag(clients_path method: :get) do %>
+            <p>Search Twitter <%= text_field_tag :search %></p>
             <%= submit_tag 'Search' %>
             <% end %>
+            <%= @search %>
             <%= @client.search("#rubyonrails", result_type: "recent").take(3).collect do |tweet| %>
-              <blockquote><h2>Username:</h2> <%= "#{tweet.user.screen_name}:" %></blockquote>
-              <blockquote><h3>Tweet:</h3> <%= "#{tweet.text}" %></blockquote>
+              <h2>Username:</h2> <%= "#{tweet.user.screen_name}:" %>
+              <h3>Tweet:</h3> <%= "#{tweet.text}" %>
               <% end %>
         </div>
     </body>
