@@ -10,14 +10,11 @@
             <h1>Search Twitter for latest Tweets on what you like!</h1>
         </div>
         <div class="twitter">
-            <%= form_tag(clients_path method: :get) do %>
-            <p>Search Twitter <%= text_field_tag :search, params[:search] %></p>
-            <%= submit_tag 'Search'%>
-            <% end %>
-            <%= @search %>
-            <%= @client.search(@search, result_type: "recent").take(3).collect do |tweet| %>
+            <h2>Back to search page: <%= link_to 'Home', root_path %> </h2>
+            <p>Showing results for : <%= @search %> </p>
+            <%= @client.search(@search, result_type: "recent", lang: "en").take(10).collect do |tweet| %>
               <blockquote><h2>Username:</h2> <%= "#{tweet.user.screen_name}:" %></blockquote>
-              <blockquote><h3>Tweet:</h3> <%= "#{tweet.text}" %></blockquote>
+              <blockquote><h3>Tweet:</h3> <%= "#{tweet.full_text}" %></blockquote>
               <% end %>
         </div>
     </body>

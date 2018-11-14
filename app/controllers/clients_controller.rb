@@ -21,8 +21,7 @@ class ClientsController < ApplicationController
             config.access_token = "866054735882842112-eV3q0dG3AHGqxaQHbXAZDfndVf8qwkB"
             config.access_token_secret = "rAS2pKxnv9gyN98X2JgOw74mwEaURhIEx6Diz4cZqc6wX"
       end
-      @search = "#fallout76"
-      #@search = client_params
+      @search = "#{params[:search]}"
     end
     
     def create
